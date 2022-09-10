@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:36:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/09 16:48:33 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/09 23:06:43 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 int	choose_operation(char *operation, t_data *data)
 {
-	if (ft_strnstr(operation, "sa", ft_strlen(operation)))
+	if (ft_strnstr(operation, "rra", ft_strlen(operation)))
+		reverse_rotate_a(data);
+	else if (ft_strnstr(operation, "rrb", ft_strlen(operation)))
+		reverse_rotate_b(data);
+	else if (ft_strnstr(operation, "rrr", ft_strlen(operation)))
+		reverse_rotate_a_b(data);
+	else if (ft_strnstr(operation, "sa", ft_strlen(operation)))
 		swap_a(data);
 	else if (ft_strnstr(operation, "sb", ft_strlen(operation)))
 		swap_b(data);
@@ -26,12 +32,15 @@ int	choose_operation(char *operation, t_data *data)
 		push_b(data);
 	else if (ft_strnstr(operation, "ra", ft_strlen(operation)))
 		rotate_a(data);
+	else if (ft_strnstr(operation, "rb", ft_strlen(operation)))
+		rotate_b(data);
+	else if (ft_strnstr(operation, "rr", ft_strlen(operation)))
+		rotate_a_b(data);
 	return (1);
 }
 
 int	swap_a_b(t_data *data)
 {
-	ft_printf("\n-----------operation: ss-------------");
 	swap_a(data);
 	swap_b(data);
 	return (1);
@@ -41,12 +50,8 @@ int	swap_a(t_data *data)
 {
 	int	temp;
 
-	ft_printf("\n-----------operation: sa-------------");
 	if (data->stack_size_a < 2)
-	{
-		ft_printf("Do nothing if there is only one or no elements.\n");
 		return (0);
-	}
 	temp = data->stack_a[0];
 	data->stack_a[0] = data->stack_a[1];
 	data->stack_a[1] = temp;
@@ -57,12 +62,8 @@ int	swap_b(t_data *data)
 {
 	int	temp;
 
-	ft_printf("\n-----------operation: sb-------------");
 	if (data->stack_size_b < 2)
-	{
-		ft_printf("Do nothing if there is only one or no elements.\n");
 		return (0);
-	}
 	temp = data->stack_b[0];
 	data->stack_b[0] = data->stack_b[1];
 	data->stack_b[1] = temp;
@@ -117,6 +118,22 @@ int	push_a(t_data *data)
 	return (1);
 }
 
+int	rotate_a(t_data *data)
+{
+	int	index;
+	int	temp;
+
+	temp = data->stack_a[0];
+	index = 0;
+	while (index < data->stack_size_a)
+	{
+		data->stack_a[index] = data->stack_a[index + 1];
+		index++;
+	}
+	data->stack_a[data->stack_size_a - 1] = temp;
+	return (1);
+}
+
 int	rotate_b(t_data *data)
 {
 	int	index;
@@ -133,19 +150,50 @@ int	rotate_b(t_data *data)
 	return (1);
 }
 
-int	rotate_a(t_data *data)
+int	rotate_a_b(t_data *data)
+{
+	rotate_a(data);
+	rotate_b(data);
+	return (1);
+}
+
+int	reverse_rotate_a(t_data *data)
 {
 	int	index;
 	int	temp;
 
-	temp = data->stack_a[0];
-	index = 0;
-	while (index < data->stack_size_a)
+	temp = data->stack_a[data->stack_size_a - 1];
+	index = data->stack_size_a - 1;
+	while (index > 0)
 	{
-		data->stack_a[index] = data->stack_a[index + 1];
-		index++;
+		data->stack_a[index] = data->stack_a[index - 1];
+		index--;
 	}
-	data->stack_a[data->stack_size_a - 1] = temp;
+	data->stack_a[0] = temp;
+	return (1);
+}
+
+int	reverse_rotate_b(t_data *data)
+{
+	int	index;
+	int	temp;
+
+	temp = data->stack_b[data->stack_size_b - 1];
+	index = data->stack_size_b - 1;
+	while (index > 0)
+	{
+		data->stack_b[index] = data->stack_b[index - 1];
+		index--;
+	}
+	data->stack_b[0] = temp;
+	return (1);
+}
+
+int	reverse_rotate_a_b(t_data *data)
+{
+
+	reverse_rotate_a(data);
+	reverse_rotate_b(data);
 	return (1);
 }
 
@@ -188,6 +236,7 @@ int	main(int argc, char *argv[])
 			index++;
 		}
 		operation = get_next_line(0);
+		ft_printf("\n-----------> operation: %s", operation);
 		choose_operation(operation, &data);
 		free (operation);
 	}
