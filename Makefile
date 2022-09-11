@@ -1,4 +1,6 @@
-SOURCE	=	push_swap.c
+SOURCE	=	push_swap.c operation_push.c
+SOURCE	+=	operation_rotate.c operation_swap.c
+SOURCE	+=	operation_reverse_rotate.c push_swap_utils.c
 
 OBJECTS	=	$(SOURCE:.c=.o)
 
@@ -10,7 +12,7 @@ MAKE	=	make -C
 
 NAME	=	push_swap
 
-FLAGS	=	-Wall -Wextra -Werror
+FLAGS	=	-Wall -Wextra -Werror -g
 
 CC	=	gcc
 
@@ -38,4 +40,5 @@ fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) $(LIBFTPATH) fclean
 
-re:	fclean all
+re:	fclean
+	make

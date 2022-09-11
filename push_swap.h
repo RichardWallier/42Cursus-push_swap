@@ -5,14 +5,22 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+typedef struct s_stack
+{
+	int	*content;
+	int	size;
+}	t_stack;
+
 typedef struct s_data
 {
-	int	*stack_a;
-	int	*stack_b;
-	int	stack_size_total;
-	int	stack_size_a;
-	int	stack_size_b;
+	t_stack	stack_a;
+	t_stack	stack_b;
+	int		num_args;
 }			   t_data;
+
+int	parse_stacks(t_data *data, size_t size, char *argv[]);
+
+int	choose_operation(char *operation, t_data *data);
 
 int	error(char *error_message);
 
