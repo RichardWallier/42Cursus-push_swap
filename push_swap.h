@@ -20,7 +20,7 @@ typedef struct s_data
 
 int	parse_stacks(t_data *data, size_t size, char *argv[]);
 
-int	choose_operation(char *operation, t_data *data);
+int	choose_call(char *call, t_data *data);
 
 int	error(char *error_message);
 
@@ -45,5 +45,9 @@ int	reverse_rotate_a(t_data *data);
 int	reverse_rotate_b(t_data *data);
 
 int	reverse_rotate_a_b(t_data *data);
+
+int	sort_five_num(t_data *data);
+
+int	sort_three_num(t_data *data);
 
 #endif
