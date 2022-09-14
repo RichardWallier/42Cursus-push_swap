@@ -16,6 +16,7 @@ typedef struct s_data
 	t_stack	stack_a;
 	t_stack	stack_b;
 	int		num_args;
+	int *reference;
 }			   t_data;
 
 int	parse_stacks(t_data *data, size_t size, char *argv[]);
