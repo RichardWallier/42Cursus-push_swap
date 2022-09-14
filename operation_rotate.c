@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 14:12:37 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/11 14:22:49 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/14 19:28:03 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	rotate_a(t_data *data)
 {
+	ft_printf("teste\n");
 	int	index;
 	int	temp;
 
@@ -30,6 +31,7 @@ int	rotate_a(t_data *data)
 
 int	rotate_b(t_data *data)
 {
+	ft_printf("teste\n");
 	int	index;
 	int	temp;
 
@@ -46,6 +48,7 @@ int	rotate_b(t_data *data)
 
 int	rotate_a_b(t_data *data)
 {
+	ft_printf("teste\n");
 	rotate_a(data);
 	rotate_b(data);
 	return (1);
