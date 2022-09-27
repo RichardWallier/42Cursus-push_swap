@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 14:14:06 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/14 19:27:57 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:16:52 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	swap_a_b(t_data *data)
 {
-	ft_printf("teste\n");
 	swap_a(data);
 	swap_b(data);
 	return (1);
@@ -22,7 +21,6 @@ int	swap_a_b(t_data *data)
 
 int	swap_a(t_data *data)
 {
-	ft_printf("teste\n");
 	int	temp;
 
 	if (data->stack_a.size < 2)
@@ -35,7 +33,6 @@ int	swap_a(t_data *data)
 
 int	swap_b(t_data *data)
 {
-	ft_printf("teste\n");
 	int	temp;
 
 	if (data->stack_b.size < 2)

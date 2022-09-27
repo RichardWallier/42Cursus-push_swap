@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 14:15:15 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/14 19:28:03 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/27 15:16:52 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 int	push_a(t_data *data)
 {
-	ft_printf("teste\n");
 	int	index;
 
 	if (data->stack_b.size == 0)
@@ -41,7 +40,6 @@ int	push_a(t_data *data)
 
 int	push_b(t_data *data)
 {
-	ft_printf("teste\n");
 	int	index;
 
 	if (data->stack_a.size == 0)

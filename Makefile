@@ -12,14 +12,14 @@ MAKE	=	make -C
 
 NAME	=	push_swap
 
-FLAGS	=	-Wall -Wextra -Werror -g
+# FLAGS	=	-Wall -Wextra -Werror -g
 
 CC	=	gcc
 
 RM	=	rm -f
 
 .c.o:	
-	@$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+	@$(CC) -c $< -o $(<:.c=.o)
 
 all:	$(NAME)
 
