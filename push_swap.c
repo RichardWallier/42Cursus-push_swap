@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:36:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/27 18:56:22 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/27 19:12:37 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,8 +256,8 @@ int	main(int argc, char *argv[])
 	else
 		sort_algorithm(&data);
 	// manual_sorting(&data);
-	// ft_printf("\n\n--------FINAL STACK-------\n\n");
-	// print_stack(&data);
+	ft_printf("\n\n--------FINAL STACK-------\n\n");
+	print_stack(&data);
 	free(data.stack_a.content);
 	free(data.stack_b.content);
 	return (0);
