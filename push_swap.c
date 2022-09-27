@@ -6,10 +6,11 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:36:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/27 17:30:03 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/27 18:56:22 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "push_swap.h"
 
 int	find_big_number_index(t_stack stack)
@@ -117,83 +118,63 @@ int	sort_algorithm(t_data *data)
 	offset = data->num_args / 4;
 	while (index < data->num_args)
 	{
-		ft_printf("a[0]: %i >= ref[%i] <= ref[%i]\n", data->stack_a.content[0], data->reference[0], data->stack_a.content[offset]);
-		print_stack(data);
-		if (data->stack_a.content[0] >= data->reference[0] && data->stack_a.content[0] <= data->reference[offset])
+		if (data->stack_a.content[0] >= data->reference[0] && data->stack_a.content[0] < data->reference[offset])
 			push_b(data);
 		else
 			rotate_a(data);
 		index++;
-		ft_printf("a[0]: %i >= ref[%i] <= ref[%i]\n", data->stack_a.content[0], data->reference[0], data->stack_a.content[offset]);
 	}
 	index = 0;
 	while (index < data->num_args)
 	{
-	print_stack(data);
-		ft_printf("a[0]: %i >= ref[%i] <= ref[%i]\n", data->stack_a.content[0], data->reference[offset], data->stack_a.content[offset * 2]);
 		if (data->stack_a.content[0] >= data->reference[offset] && data->stack_a.content[0] <= data->reference[offset * 2])
-			push_b(data);
+			choose_call("pb", data);
 		else
-			rotate_a(data);
+			choose_call("ra", data);
 		index++;
 	}
 	index = 0;
 	while (index < data->num_args)
 	{
-	print_stack(data);
-		ft_printf("a[0]: %i >= ref[%i] <= ref[%i]\n", data->stack_a.content[0], data->reference[offset * 2], data->stack_a.content[offset * 3]);
 		if (data->stack_a.content[0] >= data->reference[offset * 2] && data->stack_a.content[0] <= data->reference[offset * 3])
-			push_b(data);
+			choose_call("pb", data);
 		else
-			rotate_a(data);
+			choose_call("ra", data);
 		index++;
 	}
 	index = 0;
 	while (index < data->num_args)
 	{
-	print_stack(data);
-		ft_printf("a[0]: %i >= ref[%i] <= ref[%i]\n", data->stack_a.content[0], data->reference[offset * 3], data->stack_a.content[data->num_args - 4]);
 		if (data->stack_a.content[0] >= data->reference[offset * 3] && data->stack_a.content[0] <= data->reference[data->num_args - 4])
-			push_b(data);
+			choose_call("pb", data);
 		else
-			rotate_a(data);
+			choose_call("ra", data);
 		index++;
 	}
-	print_stack(data);
 	sort_three_num(data);
 	while (data->stack_b.size > 0)
 	{
 		index = 0;
 		min_index = find_big_number_index(data->stack_b);
-		if (min_index < (data->stack_a.size / 2))
+		if (min_index < (data->stack_b.size / 2))
 		{
 			while (index < min_index)
 			{
-				rotate_b(data);
+			choose_call("rb", data);
 				index++;
 			}
 		}
 		else 
 		{
-			while (index < data->stack_a.size - min_index)
+			while (index < data->stack_b.size - min_index)
 			{
-				reverse_rotate_b(data);
+			choose_call("rrb", data);
 				index++;
 			}
 			
 		}
-		push_a(data);
+			choose_call("pa", data);
 	}
-	// index = 0;
-	// min_index = find_small_number_index(data->stack_a);
-	// if (min_index > (data->num_args) / 2)
-	// {
-	// 	while (index < min_index - data->num_args)
-	// 	{
-	// 		reverse_rotate_a(data);
-	// 		index++;
-	// 	}
-	// }
 	return (0);
 }
 
@@ -275,8 +256,8 @@ int	main(int argc, char *argv[])
 	else
 		sort_algorithm(&data);
 	// manual_sorting(&data);
-	ft_printf("\n\n--------FINAL STACK-------\n\n");
-	print_stack(&data);
+	// ft_printf("\n\n--------FINAL STACK-------\n\n");
+	// print_stack(&data);
 	free(data.stack_a.content);
 	free(data.stack_b.content);
 	return (0);
