@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:36:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/27 19:12:37 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:17:23 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,57 +108,157 @@ int	sort_three_num(t_data *data)
 	return (1);
 }
 
+int	has_field(t_stack stack, int min, int max)
+{
+	int	index;
+
+	index = 0;
+	while (index < stack.size)
+	{
+		if (stack.content[index] >= min && stack.content[index] < max)
+			return (1);
+		index++;
+	}
+	return (0);
+}
+
+int	get_field_front(t_stack stack, int min, int max)
+{
+	int	index;
+
+	index = 0;
+	while (index < stack.size)
+	{
+		if (stack.content[index] >= min && stack.content[index] < max)
+			return (index);
+		index++;
+	}
+	return (0);
+}
+
+int	get_field_back(t_stack stack, int min, int max)
+{
+	int	index;
+
+	index = stack.size - 1;
+	while (index)
+	{
+		if (stack.content[index] >= min && stack.content[index] < max)
+			return (index);
+		index--;
+	}
+	return (0);
+}
+
 int	sort_algorithm(t_data *data)
 {
 	int	index;
 	int	offset;
 	int min_index;
+	int max_index;
 
-	index = 0;
 	offset = data->num_args / 4;
-	while (index < data->num_args)
+	while (has_field(data->stack_a, data->reference[0], data->reference[offset]))
 	{
 		if (data->stack_a.content[0] >= data->reference[0] && data->stack_a.content[0] < data->reference[offset])
-			push_b(data);
-		else
-			rotate_a(data);
-		index++;
-	}
-	index = 0;
-	while (index < data->num_args)
-	{
-		if (data->stack_a.content[0] >= data->reference[offset] && data->stack_a.content[0] <= data->reference[offset * 2])
 			choose_call("pb", data);
 		else
-			choose_call("ra", data);
-		index++;
+			{
+				index = 0;
+				min_index = get_field_front(data->stack_a, data->reference[0], data->reference[offset]);
+				max_index = get_field_back(data->stack_a, data->reference[0], data->reference[offset]);
+				if (min_index < data->stack_a.size / 2)
+					while (index < min_index)
+					{
+						choose_call("ra", data);
+						index++;
+					}
+				else
+					while (index < (data->stack_a.size - min_index))
+					{
+						choose_call("rra", data);
+						index++;
+					}
+			}
 	}
-	index = 0;
-	while (index < data->num_args)
+	while (has_field(data->stack_a, data->reference[offset], data->reference[offset * 2]))
 	{
-		if (data->stack_a.content[0] >= data->reference[offset * 2] && data->stack_a.content[0] <= data->reference[offset * 3])
+		if (data->stack_a.content[0] >= data->reference[offset] && data->stack_a.content[0] < data->reference[offset * 2])
 			choose_call("pb", data);
 		else
-			choose_call("ra", data);
-		index++;
+			{
+				index = 0;
+				min_index = get_field_front(data->stack_a, data->reference[offset], data->reference[offset * 2]);
+				max_index = get_field_back(data->stack_a, data->reference[offset], data->reference[offset * 2]);
+				if (min_index < data->stack_a.size / 2)
+					while (index < min_index)
+					{
+						choose_call("ra", data);
+						index++;
+					}
+				else
+					while (index < (data->stack_a.size - min_index))
+					{
+						choose_call("rra", data);
+						index++;
+					}
+			}
 	}
-	index = 0;
-	while (index < data->num_args)
+	while (has_field(data->stack_a, data->reference[offset * 2], data->reference[offset * 3]))
 	{
-		if (data->stack_a.content[0] >= data->reference[offset * 3] && data->stack_a.content[0] <= data->reference[data->num_args - 4])
+		if (data->stack_a.content[0] >= data->reference[offset * 2] && data->stack_a.content[0] < data->reference[offset * 3])
 			choose_call("pb", data);
 		else
-			choose_call("ra", data);
+			{
+				index = 0;
+				min_index = get_field_front(data->stack_a, data->reference[offset * 2], data->reference[offset * 3]);
+				max_index = get_field_back(data->stack_a, data->reference[offset * 2], data->reference[offset * 3]);
+				if (min_index < data->stack_a.size / 2)
+					while (index < min_index)
+					{
+						choose_call("ra", data);
+						index++;
+					}
+				else
+					while (index < (data->stack_a.size - min_index))
+					{
+						choose_call("rra", data);
+						index++;
+					}
+			}
+	}
+	while (has_field(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 4]))
+	{
+		if (data->stack_a.content[0] >= data->reference[offset * 3] && data->stack_a.content[0] < data->reference[data->num_args - 4])
+			choose_call("pb", data);
+		else
+			{
+				index = 0;
+				min_index = get_field_front(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 4]);
+				max_index = get_field_back(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 4]);
+				if (min_index < data->stack_a.size / 2)
+					while (index < min_index)
+					{
+						choose_call("ra", data);
+						index++;
+					}
+				else
+					while (index < (data->stack_a.size - min_index))
+					{
+						choose_call("rra", data);
+						index++;
+					}
+			}
 		index++;
 	}
 	sort_three_num(data);
 	while (data->stack_b.size > 0)
 	{
 		index = 0;
-		min_index = find_big_number_index(data->stack_b);
-		if (min_index < (data->stack_b.size / 2))
+		max_index = find_big_number_index(data->stack_b);
+		if (max_index < (data->stack_b.size / 2))
 		{
-			while (index < min_index)
+			while (index < max_index)
 			{
 			choose_call("rb", data);
 				index++;
@@ -166,7 +266,7 @@ int	sort_algorithm(t_data *data)
 		}
 		else 
 		{
-			while (index < data->stack_b.size - min_index)
+			while (index < data->stack_b.size - max_index)
 			{
 			choose_call("rrb", data);
 				index++;
@@ -256,8 +356,8 @@ int	main(int argc, char *argv[])
 	else
 		sort_algorithm(&data);
 	// manual_sorting(&data);
-	ft_printf("\n\n--------FINAL STACK-------\n\n");
-	print_stack(&data);
+	// ft_printf("\n\n--------FINAL STACK-------\n\n");
+	// print_stack(&data);
 	free(data.stack_a.content);
 	free(data.stack_b.content);
 	return (0);
