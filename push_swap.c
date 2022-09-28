@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:36:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/28 18:39:55 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/28 19:25:29 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,16 +197,14 @@ void	sort_hundred(t_data *data)
 	int	offset;
 	int max_offset;
 	int max_index;
-	int	aux;
 
 	max_offset = 4;
 	offset = data->num_args / max_offset;
-	// push_field(data, 0, offset);
-	aux = 0;
-	while (aux < 3)
+	index = 0;
+	while (index < 3)
 	{
-		push_field(data, offset * aux, offset * (aux + 1));
-		aux++;
+		push_field(data, offset * index, offset * (index + 1));
+		index++;
 	}
 	while (has_field(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 3]))
 		push_field(data, offset * (max_offset - 1), data->num_args - 3);
@@ -223,85 +221,6 @@ void	sort_hundred(t_data *data)
 				choose_call("rrb", data);
 		choose_call("pa", data);
 	}
-	// int	index;
-	// int	offset;
-	// int min_index;
-	// int max_index;
-
-	// offset = data->num_args / 4;
-	// while (has_field(data->stack_a, data->reference[0], data->reference[offset]))
-	// 	if (data->stack_a.content[0] >= data->reference[0] && data->stack_a.content[0] < data->reference[offset])
-	// 		choose_call("pb", data);
-	// 	else
-	// 		{
-	// 			index = 0;
-	// 			min_index = get_field_front(data->stack_a, data->reference[0], data->reference[offset]);
-	// 			max_index = get_field_back(data->stack_a, data->reference[0], data->reference[offset]);
-	// 			if (min_index < data->stack_a.size / 2)
-	// 				while (index++ < min_index)
-	// 					choose_call("ra", data);
-	// 			else
-	// 				while (index++ < (data->stack_a.size - min_index))
-	// 					choose_call("rra", data);
-	// 		}
-	// while (has_field(data->stack_a, data->reference[offset], data->reference[offset * 2]))
-	// 	if (data->stack_a.content[0] >= data->reference[offset] && data->stack_a.content[0] < data->reference[offset * 2])
-	// 		choose_call("pb", data);
-	// 	else
-	// 		{
-	// 			index = 0;
-	// 			min_index = get_field_front(data->stack_a, data->reference[offset], data->reference[offset * 2]);
-	// 			max_index = get_field_back(data->stack_a, data->reference[offset], data->reference[offset * 2]);
-	// 			if (min_index < data->stack_a.size / 2)
-	// 				while (index++ < min_index)
-	// 					choose_call("ra", data);
-	// 			else
-	// 				while (index++ < (data->stack_a.size - min_index))
-	// 					choose_call("rra", data);
-	// 		}
-	// while (has_field(data->stack_a, data->reference[offset * 2], data->reference[offset * 3]))
-	// 	if (data->stack_a.content[0] >= data->reference[offset * 2] && data->stack_a.content[0] < data->reference[offset * 3])
-	// 		choose_call("pb", data);
-	// 	else
-	// 		{
-	// 			index = 0;
-	// 			min_index = get_field_front(data->stack_a, data->reference[offset * 2], data->reference[offset * 3]);
-	// 			max_index = get_field_back(data->stack_a, data->reference[offset * 2], data->reference[offset * 3]);
-	// 			if (min_index < data->stack_a.size / 2)
-	// 				while (index++ < min_index)
-	// 					choose_call("ra", data);
-	// 			else
-	// 				while (index++ < (data->stack_a.size - min_index))
-	// 					choose_call("rra", data);
-	// 		}
-	// while (has_field(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 3]))
-	// 	if (data->stack_a.content[0] >= data->reference[offset * 3] && data->stack_a.content[0] < data->reference[data->num_args - 3])
-	// 		choose_call("pb", data);
-	// 	else
-	// 		{
-	// 			index = 0;
-	// 			min_index = get_field_front(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 3]);
-	// 			max_index = get_field_back(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 3]);
-	// 			if (min_index < data->stack_a.size / 2)
-	// 				while (index++ < min_index)
-	// 					choose_call("ra", data);
-	// 			else
-	// 				while (index++ < (data->stack_a.size - min_index))
-	// 					choose_call("rra", data);
-	// 		}
-	// sort_three_num(data);
-	// while (data->stack_b.size > 0)
-	// {
-	// 	index = 0;
-	// 	max_index = find_big_number_index(data->stack_b);
-	// 	if (max_index < (data->stack_b.size / 2))
-	// 		while (index++ < max_index)
-	// 			choose_call("rb", data);
-	// 	else 
-	// 		while (index++ < data->stack_b.size - max_index)
-	// 			choose_call("rrb", data);
-	// 	choose_call("pa", data);
-	// }
 }
 
 
@@ -311,18 +230,16 @@ void	sort_algorithm(t_data *data)
 	int	offset;
 	int max_offset;
 	int max_index;
-	int	aux;
 
-	max_offset = 17;
+	max_offset = 15;
 	offset = data->num_args / max_offset;
-	// push_field(data, 0, offset);
-	aux = 0;
-	while (aux < 16)
+	index = 0;
+	while (index < (max_offset - 1))
 	{
-		push_field(data, offset * aux, offset * (aux + 1));
-		aux++;
+		push_field(data, offset * index, offset * (index + 1));
+		index++;
 	}
-	while (has_field(data->stack_a, data->reference[offset * 16], data->reference[data->num_args - 3]))
+	while (has_field(data->stack_a, data->reference[offset * (max_offset - 1)], data->reference[data->num_args - 3]))
 		push_field(data, offset * (max_offset - 1), data->num_args - 3);
 	sort_three_num(data);
 	while (data->stack_b.size > 0)
@@ -380,8 +297,8 @@ int	main(int argc, char *argv[])
 		sort_algorithm(&data);
 		// sort_hundred(&data);
 	// manual_sorting(&data);
-	// ft_printf("\n\n--------FINAL STACK-------\n\n");
-	// print_stack(&data);
+	ft_printf("\n\n--------FINAL STACK-------\n\n");
+	print_stack(&data);
 	free(data.stack_a.content);
 	free(data.stack_b.content);
 	return (0);

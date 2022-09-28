@@ -24,19 +24,20 @@ RM	=	rm -f
 all:	$(NAME)
 
 $(LIBFT):
-		$(MAKE) $(LIBFTPATH)
+	@$(MAKE) $(LIBFTPATH)
 
 $(NAME):	$(OBJECTS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
+	@echo 'Push_swap done'
 
 
 clean:
 	@$(RM) $(OBJECTS)
-	$(MAKE) $(LIBFTPATH) clean
+	@$(MAKE) $(LIBFTPATH) clean
 
 fclean: clean
-	$(RM) $(NAME)
-	$(MAKE) $(LIBFTPATH) fclean
+	@$(RM) $(NAME)
+	@$(MAKE) $(LIBFTPATH) fclean
 
 re:	fclean
 	make
