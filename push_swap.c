@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:36:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/28 12:17:23 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:40:13 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,15 +227,15 @@ int	sort_algorithm(t_data *data)
 					}
 			}
 	}
-	while (has_field(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 4]))
+	while (has_field(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 3]))
 	{
-		if (data->stack_a.content[0] >= data->reference[offset * 3] && data->stack_a.content[0] < data->reference[data->num_args - 4])
+		if (data->stack_a.content[0] >= data->reference[offset * 3] && data->stack_a.content[0] < data->reference[data->num_args - 3])
 			choose_call("pb", data);
 		else
 			{
 				index = 0;
-				min_index = get_field_front(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 4]);
-				max_index = get_field_back(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 4]);
+				min_index = get_field_front(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 3]);
+				max_index = get_field_back(data->stack_a, data->reference[offset * 3], data->reference[data->num_args - 3]);
 				if (min_index < data->stack_a.size / 2)
 					while (index < min_index)
 					{
