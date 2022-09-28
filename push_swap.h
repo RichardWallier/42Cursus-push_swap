@@ -21,6 +21,10 @@ typedef struct s_data
 
 int	parse_stacks(t_data *data, size_t size, char *argv[]);
 
+int	parse_referene(t_data *data);
+
+int sort_reference(t_data *data);
+
 int	choose_call(char *call, t_data *data);
 
 int	error(char *error_message);
