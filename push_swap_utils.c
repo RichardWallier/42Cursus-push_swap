@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 14:10:31 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/28 18:29:49 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:53:23 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,50 +39,11 @@ int	choose_call(char *call, t_data *data)
 	return (1);
 }
 
-int	parse_stacks(t_data *data, size_t size, char *argv[])
+int	sort_reference(t_data *data)
 {
-	size_t index;
-
-	data->num_args = size;
-	data->stack_a.size = size;
-	data->stack_b.size = 0;
-	data->stack_a.content = ft_calloc(size, sizeof(int));
-	data->stack_b.content = ft_calloc(size, sizeof(int));
-	index = 0;
-	while (index < size)
-	{
-		// aux = 0;
-		// while (aux < ft_strlen(argv[index + 1]))
-		// {
-		// 	if (!ft_isdigit(argv[index + 1][aux]))
-		// 		return (0);
-		// 	aux++;
-		// }
-		data->stack_a.content[index] = ft_atoi(argv[index + 1]);
-		index++;
-	}
-	return (1);
-}
-
-int	parse_referene(t_data *data)
-{
-	int index;
-
-	index = 0;
-	data->reference = calloc(data->num_args, sizeof(int));
-	while (index < data->num_args)
-	{
-		data->reference[index] = data->stack_a.content[index];
-		index++;
-	}
-	return (1);
-}
-
-int sort_reference(t_data *data)
-{
-	int index;
-	int offset;
-	int temp;
+	int	index;
+	int	offset;
+	int	temp;
 
 	offset = 0;
 	while (offset < data->num_args)
@@ -101,4 +62,20 @@ int sort_reference(t_data *data)
 		offset++;
 	}
 	return (1);
+}
+
+int	split_len(char **split)
+{
+	int	index;
+
+	index = 0;
+	while (split[index])
+		index++;
+	return (index);
+}
+
+int	error(char *error_message)
+{
+	ft_printf("%s\n", error_message);
+	exit(EXIT_FAILURE);
 }

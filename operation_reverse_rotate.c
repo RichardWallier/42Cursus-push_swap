@@ -6,12 +6,11 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 14:10:31 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/27 15:16:52 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/09/30 17:51:01 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	reverse_rotate_a(t_data *data)
 {
@@ -47,7 +46,6 @@ int	reverse_rotate_b(t_data *data)
 
 int	reverse_rotate_a_b(t_data *data)
 {
-
 	reverse_rotate_a(data);
 	reverse_rotate_b(data);
 	return (1);
