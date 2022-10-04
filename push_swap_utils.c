@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 14:10:31 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/30 16:53:23 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/10/04 14:19:01 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,9 @@ int	split_len(char **split)
 	return (index);
 }
 
-int	error(char *error_message)
+int	calloc_double(t_data *data, size_t count, size_t size)
 {
-	ft_printf("%s\n", error_message);
-	exit(EXIT_FAILURE);
+	data->stack_a.content = ft_calloc(count, size);
+	data->stack_b.content = ft_calloc(count, size);
+	return (1);
 }

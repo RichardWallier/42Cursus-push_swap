@@ -6,13 +6,13 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 19:49:03 by rwallier          #+#    #+#             */
-/*   Updated: 2022/05/13 12:53:03 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/10/04 09:42:05 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long long int	ft_atoi(const char *str)
 {
 	long int	res;
 	int			i;

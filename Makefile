@@ -1,7 +1,7 @@
 SOURCE	=	push_swap.c operation_push.c
 SOURCE	+=	operation_rotate.c operation_swap.c
 SOURCE	+=	operation_reverse_rotate.c push_swap_utils.c
-SOURCE	+=	parse.c sort.c sort_utils.c
+SOURCE	+=	parse.c sort.c sort_utils.c error.c
 
 OBJECTS	=	$(SOURCE:.c=.o)
 

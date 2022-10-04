@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:36:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/30 17:49:32 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/10/04 14:48:38 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ int	main(int argc, char *argv[])
 	t_data	data;
 
 	if (!parse_stacks(&data, argc - 1, argv))
-		exit (ft_printf("Error\n"));
+		error ("Error\n", &data);
 	parse_referene(&data);
 	sort_reference(&data);
+	is_sorted(&data);
 	if (data.num_args == 3)
 		sort_three_num(&data);
 	else if (data.num_args == 5)
@@ -45,5 +46,6 @@ int	main(int argc, char *argv[])
 		sort_algorithm(&data, 15);
 	free(data.stack_a.content);
 	free(data.stack_b.content);
+	free(data.reference);
 	return (0);
 }

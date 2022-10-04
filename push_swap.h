@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 17:56:05 by rwallier          #+#    #+#             */
-/*   Updated: 2022/09/30 17:56:06 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/10/04 14:30:27 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_stack
 {
-	int	*content;
+	long long int	*content;
 	int	size;
 }	t_stack;
 
@@ -57,12 +57,21 @@ int		find_small_number_index(t_stack stack);
 
 int		choose_call(char *call, t_data *data);
 
-int		error(char *error_message);
+int	error(char *error_message, t_data *data);
 
 int		split_len(char **split);
 
+int	is_int(t_data *data);
+
+int	free_split(char **split);
+
+int	calloc_double(t_data *data, size_t count, size_t size);
+
+int	is_sorted(t_data *data);
+
 //-----------------------------------------
 //               OPERATIONS
+//-----------------------------------------
 
 int		swap_a(t_data *data);
 
