@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:14:53 by rwallier          #+#    #+#             */
-/*   Updated: 2022/10/04 14:22:50 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:00:07 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	is_int(t_data *data)
 		aux = 0;
 		while (aux < data->stack_a.size)
 		{
-			if (data->stack_a.content[index] == data->stack_a.content[aux] && index != aux)
+			if (data->stack_a.content[index]
+				== data->stack_a.content[aux] && index != aux)
 				return (0);
 			aux++;
 		}

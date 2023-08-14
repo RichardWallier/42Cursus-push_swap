@@ -6,26 +6,26 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 18:36:46 by rwallier          #+#    #+#             */
-/*   Updated: 2022/10/04 14:48:38 by rwallier         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:09:32 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_stack(t_data *data)
-{
-	int	index;
+// void	print_stack(t_data *data)
+// {
+// 	int	index;
 
-	index = 0;
-	while (index < data->num_args)
-	{
-		ft_printf("stack_a[%i]: %i || stack_b[%i]: %i\n", index,
-			data->stack_a.content[index],
-			index, data->stack_b.content[index]);
-		index++;
-	}
-	ft_printf("\n\n");
-}
+// 	index = 0;
+// 	while (index < data->num_args)
+// 	{
+// 		ft_printf("stack_a[%i]: %i || stack_b[%i]: %i\n", index,
+// 			data->stack_a.content[index],
+// 			index, data->stack_b.content[index]);
+// 		index++;
+// 	}
+// 	ft_printf("\n\n");
+// }
 
 int	main(int argc, char *argv[])
 {
