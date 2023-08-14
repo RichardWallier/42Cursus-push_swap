@@ -6,7 +6,7 @@
 /*   By: rwallier <rwallier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:14:53 by rwallier          #+#    #+#             */
-/*   Updated: 2022/10/04 15:00:07 by rwallier         ###   ########.fr       */
+/*   Updated: 2023/08/14 18:30:10 by rwallier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ int	is_int(t_data *data)
 
 int	parse_stacks(t_data *data, size_t size, char *argv[])
 {
-	size_t	index;
-
-	index = 0;
 	if (size == 1)
 	{
 		if (!populate_string(data, argv))
